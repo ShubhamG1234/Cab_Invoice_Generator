@@ -9,12 +9,12 @@ namespace CabInvoiceGeneratorTest
         [TestMethod]
         public void CalTotalFare()
         {
-            //Arrange
+            //arrange
             CabInvoice cabInvoice = new CabInvoice();
 
-            //Act
+            //act
             int fare = cabInvoice.CalculateFare(10, 30);
-            //Assert
+            //assert
             Assert.AreEqual(130, fare);
 
         }
@@ -22,11 +22,21 @@ namespace CabInvoiceGeneratorTest
         [TestMethod]
         public void CheckMinimumFairAsFive()
         {
-            //Arrange
+            //arrange
             CabInvoice cabInvoice = new CabInvoice();
 
             double fare = cabInvoice.CalculateFare(0, 0);
             Assert.AreEqual(5, fare);
+        }
+
+        [TestMethod]
+        public void CalAggFairAndMultipleRide()
+        {
+            CabInvoice cabInvoice = new CabInvoice();
+            cabInvoice.AddRide(2, 5);
+            cabInvoice.AddRide(12, 15);
+            double fare = cabInvoice.CalculateAggregate();
+            Assert.AreEqual(160, fare);
         }
     }
 }
