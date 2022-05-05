@@ -34,8 +34,6 @@ namespace CabInvoiceGenerator
         }
         public InvoiceSummary CalculateAggregate()
         {
-            //enhanced invoice
-
             double fare = 0;
             foreach (Ride ride in rides)
             {
