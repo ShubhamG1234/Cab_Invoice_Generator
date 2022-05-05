@@ -38,5 +38,15 @@ namespace CabInvoiceGeneratorTest
             double fare = cabInvoice.CalculateAggregate();
             Assert.AreEqual(160, fare);
         }
+        //invoice generator must return average vale
+        [TestMethod]
+        public void AddMultipleRideToCheckAvgFare()
+        {
+            CabInvoice cabInvoice = new CabInvoice();
+            cabInvoice.AddRide(2, 5);
+            cabInvoice.AddRide(12, 15);
+            var invoiceSummary = cabInvoice.CalculateAggregate();
+            Assert.AreEqual(80, invoiceSummary.AvgFare);
+        }
     }
 }
